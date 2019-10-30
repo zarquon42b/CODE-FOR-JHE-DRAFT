@@ -1,0 +1,34 @@
+ID	SPECIES
+Specimen_1	Homo_sapiens
+Specimen_2	Homo_sapiens
+Specimen_3	Homo_sapiens
+Specimen_4	Homo_sapiens
+Specimen_5	Homo_sapiens
+Specimen_6	Homo_sapiens
+Specimen_7	Homo_sapiens
+Specimen_8	Homo_sapiens
+Specimen_9	Homo_sapiens
+Specimen_10	Homo_sapiens
+Specimen_11	Homo_sapiens
+Specimen_12	Homo_sapiens
+Specimen_13	Homo_sapiens
+Specimen_14	Homo_sapiens
+Specimen_15	Homo_sapiens
+Specimen_16	Homo_sapiens
+Specimen_17	Homo_sapiens
+Specimen_18	Homo_sapiens
+Specimen_19	Homo_sapiens
+Specimen_20	Homo_sapiens
+Specimen_21	Homo_sapiens
+Specimen_22	Homo_sapiens
+Specimen_23	Homo_sapiens
+Specimen_24	Homo_sapiens
+Specimen_25	Homo_sapiens
+Specimen_26	Homo_sapiens
+Specimen_27	Homo_sapiens
+Specimen_28	Homo_sapiens
+Specimen_29	Homo_sapiens
+
+
+
+

@@ -6,9 +6,9 @@ require(ape)
 require(rgl)
 
 #Load landmark data----
-Trunk_data <- read.morphologika("E:/R progress/Trunk_analyses_R/Kebara2_prediction/N64_trunks.txt")
-Pelves_Kebara2 <- read.morphologika("E:/R progress/Trunk_analyses_R/Kebara2_prediction/Kebara2_pelves.txt")
-Kebara2_thorax_reconstructions <- read.morphologika("E:/R progress/Trunk_analyses_R/Kebara2_prediction/Kebara2_thorax_reconstructions.txt")
+Trunk_data <- read.morphologika("N64_trunks.txt")
+Pelves_Kebara2 <- read.morphologika("Kebara2_pelves.txt")
+Kebara2_thorax_reconstructions <- read.morphologika("Kebara2_thorax_reconstructions.txt")
 
 #Resliding trunk data ----
 #Define landmarks and semilandmarks
@@ -93,15 +93,15 @@ for (i in 1:64) {
 Todo_trunk <- relaxarray[,,1:64]
 
 # Thorax and pelvis n=64 H. sapiens
-Thorax_temp <- read.morphologika("E:/R progress/Trunk_analyses_R/Kebara2_prediction/Thorax_temp_mlk_stern.txt")
+Thorax_temp <- read.morphologika("Thorax_temp_mlk_stern.txt")
 Thorax_indices <- vcgKDtree(Trunk_data[,,36],Thorax_temp[,,1],k=1)$index
 Thorax <- Todo_trunk[Thorax_indices,,]
-Pelvis_temp <- read.morphologika("E:/R progress/Trunk_analyses_R/Kebara2_prediction/Pelvis_temp_mlk.txt")
+Pelvis_temp <- read.morphologika("Pelvis_temp_mlk.txt")
 Pelvis_indices <- vcgKDtree(Trunk_data[,,36],Pelvis_temp[,,1],k=1)$index
 Pelvis <- Todo_trunk[Pelvis_indices,,]
 
-Thorax_mesh <- vcgImport("E:/R progress/Trunk_analyses_R/Kebara2_prediction/Thorax_temp.ply", updateNormals = TRUE, readcolor = FALSE, clean = TRUE,silent = FALSE)
-Pelvis_mesh <- vcgImport("E:/R progress/Trunk_analyses_R/Kebara2_prediction/Pelvis_temp.ply", updateNormals = TRUE, readcolor = FALSE, clean = TRUE,silent = FALSE)
+Thorax_mesh <- vcgImport("Thorax_temp.ply", updateNormals = TRUE, readcolor = FALSE, clean = TRUE,silent = FALSE)
+Pelvis_mesh <- vcgImport("Pelvis_temp.ply", updateNormals = TRUE, readcolor = FALSE, clean = TRUE,silent = FALSE)
 
 # GPA DE 64 H. SAPIENS----
 
@@ -169,14 +169,14 @@ shade3d(Thorax_Kebara2RA_ModelA,col="azure",back="lines",box=FALSE,axes=FALSE,sp
 
 #Superimposition of prediction Kebara 2 thorax from Rak & Arensburg pelvis: Model B with thorax reconstruction of G-O et al. 2018
 shade3d(Thorax_Kebara2RA_ModelA,col="azure",back="lines",box=FALSE,axes=FALSE,specular="white")
-Thorax_Kebara2GO_mesh <- vcgImport("E:/R progress/Trunk_analyses_R/Kebara2_prediction/Kebara2_GO.ply", updateNormals = TRUE, readcolor = FALSE, clean = TRUE,silent = FALSE)
+Thorax_Kebara2GO_mesh <- vcgImport("Kebara2_GO.ply", updateNormals = TRUE, readcolor = FALSE, clean = TRUE,silent = FALSE)
 Thorax_Kebara2GO_toGPA_ModelA <- rotonto(Thorax_GPA_Homo$mshape,Kebara2_thorax_reconstructions[,,1],scale = T)$yrot
 Thorax_Kebara2GO_ModelA <- tps3d(Thorax_Kebara2GO_mesh,Kebara2_thorax_reconstructions[,,1],Thorax_Kebara2GO_toGPA_ModelA)
 shade3d(Thorax_Kebara2GO_ModelA,col="deepskyblue",back="lines",box=FALSE,axes=FALSE,specular="white")
 
 #Superimposition of prediction Kebara 2 thorax from Rak & Arensburg pelvis: Model  with thorax reconstruction Sawyer and Maley (2005)
 shade3d(Thorax_Kebara2RA_ModelA,col="azure",back="lines",box=FALSE,axes=FALSE,specular="white")
-Thorax_Kebara2S_M_mesh <- vcgImport("E:/R progress/Trunk_analyses_R/Kebara2_prediction/Thorax_Sawyer_Maley.ply", updateNormals = TRUE, readcolor = FALSE, clean = TRUE,silent = FALSE)
+Thorax_Kebara2S_M_mesh <- vcgImport("Thorax_Sawyer_Maley.ply", updateNormals = TRUE, readcolor = FALSE, clean = TRUE,silent = FALSE)
 Thorax_Kebara2S_M_toGPA_ModelA <- rotonto(Thorax_GPA_Homo$mshape,Kebara2_thorax_reconstructions[,,2],scale = T)$yrot
 Thorax_Kebara2S_M_ModelA <- tps3d(Thorax_Kebara2S_M_mesh,Kebara2_thorax_reconstructions[,,2],Thorax_Kebara2S_M_toGPA_ModelA)
 shade3d(Thorax_Kebara2S_M_ModelA,col="palegreen",back="lines",box=FALSE,axes=FALSE,specular="white")
@@ -191,14 +191,14 @@ shade3d(Thorax_Kebara2SM_ModelA,col="azure",back="lines",box=FALSE,axes=FALSE,sp
 
 #Superimposition of prediction Kebara 2 thorax from Sawyer and Maley (2005) pelvis: Model A with thorax reconstruction of G-O et al. 2018
 shade3d(Thorax_Kebara2SM_ModelA,col="azure",back="lines",box=FALSE,axes=FALSE,specular="white")
-Thorax_Kebara2GO_mesh <- vcgImport("E:/R progress/Trunk_analyses_R/Kebara2_prediction/Kebara2_GO.ply", updateNormals = TRUE, readcolor = FALSE, clean = TRUE,silent = FALSE)
+Thorax_Kebara2GO_mesh <- vcgImport("Kebara2_GO.ply", updateNormals = TRUE, readcolor = FALSE, clean = TRUE,silent = FALSE)
 Thorax_Kebara2GO_toGPA_ModelA <- rotonto(Thorax_GPA_Homo$mshape,Kebara2_thorax_reconstructions[,,2],scale = T)$yrot
 Thorax_Kebara2GO_ModelA <- tps3d(Thorax_Kebara2GO_mesh,Kebara2_thorax_reconstructions[,,1],Thorax_Kebara2GO_toGPA_ModelA)
 shade3d(Thorax_Kebara2GO_ModelA,col="deepskyblue",back="lines",box=FALSE,axes=FALSE,specular="white")
 
 #Superimposition of prediction Kebara 2 thorax from Sawyer and Maley (2005) pelvis: Model A with thorax reconstruction of Sawyer and Maley (2005)
 shade3d(Thorax_Kebara2SM_ModelA,col="azure",back="lines",box=FALSE,axes=FALSE,specular="white")
-Thorax_Kebara2S_M_mesh <- vcgImport("E:/R progress/Trunk_analyses_R/Kebara2_prediction/Thorax_Sawyer_Maley.ply", updateNormals = TRUE, readcolor = FALSE, clean = TRUE,silent = FALSE)
+Thorax_Kebara2S_M_mesh <- vcgImport("Thorax_Sawyer_Maley.ply", updateNormals = TRUE, readcolor = FALSE, clean = TRUE,silent = FALSE)
 Thorax_Kebara2S_M_toGPA_ModelA <- rotonto(Thorax_GPA_Homo$mshape,Kebara2_Asier[,,2],scale = T)$yrot
 Thorax_Kebara2S_M_ModelA <- tps3d(Thorax_Kebara2S_M_mesh,Kebara2_Asier[,,2],Thorax_Kebara2S_M_toGPA_ModelA)
 shade3d(Thorax_Kebara2S_M_ModelA,col="palegreen",back="lines",box=FALSE,axes=FALSE,specular="white")
@@ -209,7 +209,7 @@ abline(h=0.00,v=0.00,col="black")
 legend("bottomright", inset=.005, legend = c("Females","Males"), horiz=FALSE, cex=1.2,bty="n",fill=col_leg_sex, border=col_leg_sex)
 col_polyg <- c("black")
 
-groups64thorax <- read.table("E:/R progress/Trunk_analyses_R/Kebara2_prediction/Groups_N64sapiens.txt",header=TRUE)
+groups64thorax <- read.table("Groups_N64sapiens.txt",header=TRUE)
 if (require(car)) {
   for(ii in 1:length(levels(groups64thorax$SPECIES))){
     dataEllipse(PLS_ModelA$Xscores[groups64thorax$SPECIES==levels(groups64thorax$SPECIES)[ii],1],PLS_ModelA$Yscores[groups64thorax$SPECIES==levels(groups64thorax$SPECIES)[ii],1],add=TRUE,center.pch = FALSE,levels=c(.95), col=col_polyg[ii],fill=F, fill.alpha=0.10,robust=TRUE)}
